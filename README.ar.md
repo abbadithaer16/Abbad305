@@ -32,8 +32,9 @@ npm run preview   # يعرض dist/ على http://127.0.0.1:4173
 
 ### الطريقة 1 — تلقائيًا (موصى بها)
 1. أنشئ مستودعًا جديدًا على GitHub (مثلًا `eclat`) وارفع **محتوى هذا المجلد** إلى جذره على فرع `main`.
-2. من المستودع: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. أي دفع إلى `main` يبني الموقع وينشره. الرابط سيكون: `https://<اسم-المستخدم>.github.io/<اسم-المستودع>/`
+2. ملف `.github/workflows/deploy-pages.yml` يبني الموقع عند كل دفع إلى `main` وينشر الناتج في فرع `gh-pages`.
+3. من المستودع: **Settings → Pages → Build and deployment → Deploy from a branch → `gh-pages` / `(root)`** (غالبًا يتفعّل تلقائيًا عند إنشاء الفرع).
+4. الرابط سيكون: `https://<اسم-المستخدم>.github.io/<اسم-المستودع>/`
 
 ### الطريقة 2 — يدويًا بدون بناء
 ارفع محتوى مجلد `site/` إلى فرع `gh-pages` (أو مجلد `docs/` على `main`)، ثم من **Settings → Pages** اختر ذلك الفرع/المجلد.
