@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/*
+ * Theme colours come from src/lib/themes.ts and are set as CSS variables on <html>
+ * (see app/[lang]/layout.tsx). The defaults below are the "clinical" preset,
+ * used only as a fallback.
+ */
+:root {
+  --bg: #ffffff;
+  --surface: #f3f7fc;
+  --card: #ffffff;
+  --ink: #0f2540;
+  --copy: #34465c;
+  --muted: #56677d;
+  --line: #dce5ef;
+  --primary: #1d5fa8;
+  --primary-hover: #174e8c;
+  --primary-soft: #e7f0fa;
+  --primary-ink: #1a5596;
+  --on-primary: #ffffff;
+  --placeholder: #e3eaf2;
+  --placeholder-alt: #eef3f8;
+  --whatsapp: #128c7e;
+  --star: #e2a000;
+  --danger: #b42318;
+
+  --header-h: 4.5rem;
+  --mobile-bar-h: 4.25rem;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-copy: var(--copy);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-ink: var(--primary-ink);
+  --color-on-primary: var(--on-primary);
+  --color-placeholder: var(--placeholder);
+  --color-placeholder-alt: var(--placeholder-alt);
+  --color-whatsapp: var(--whatsapp);
+  --color-star: var(--star);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-stack);
+
+  --shadow-soft: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 16px rgb(16 24 40 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(16 24 40 / 0.05), 0 12px 28px rgb(16 24 40 / 0.09);
+}
+
+/* Base styles live in a layer so Tailwind utilities (e.g. text-white) can override them. */
+@layer base {
+  /* Fonts: Arabic pages lead with IBM Plex Sans Arabic, English pages with IBM Plex Sans. */
+  html {
+    --font-stack: var(--font-plex), var(--font-plex-arabic), system-ui, sans-serif;
+    scroll-padding-top: calc(var(--header-h) + 1rem);
+    -webkit-text-size-adjust: 100%;
+  }
+  html[lang='ar'] {
+    --font-stack: var(--font-plex-arabic), var(--font-plex), system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--copy);
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.125rem; /* 18px */
+    }
+  }
+  html[lang='ar'] body {
+    line-height: 1.8;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--ink);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--primary-soft);
+    color: var(--ink);
+  }
+
+  /* Smooth in-page anchor scrolling (native, no scroll-jacking). */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/*
+ * Heading line-height is deliberately outside the layers so it always wins over
+ * the line-height that Tailwind's text-size utilities set (Arabic needs more room).
+ */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+}
+html[lang='ar'] :is(h1, h2, h3, h4) {
+  line-height: 1.4;
+}
+
+@layer components {
+  /* Below-the-fold sections skip rendering work until they approach the viewport. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+  .no-cv .cv-auto {
+    content-visibility: visible;
+  }
+
+  /* ── Section reveal: one-time fade + 16px rise, added by <RevealObserver/> ── */
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 450ms ease-out,
+      transform 450ms ease-out;
+  }
+  .reveal-pending.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── Gentle hover lift for cards and buttons ── */
+  .lift {
+    transition:
+      transform 200ms ease-out,
+      box-shadow 200ms ease-out,
+      background-color 200ms ease-out,
+      border-color 200ms ease-out;
+  }
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-2px);
+    }
+    .card.lift:hover {
+      box-shadow: var(--shadow-lift);
+    }
+  }
+}
+
+/* ── Reduced motion: disable all animation and transitions ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-pending {
+    opacity: 1;
+    transform: none;
+  }
+  .lift:hover {
+    transform: none;
+  }
+}
+
+/* Keep fixed mobile bar from covering the end of the page. */
+@media (max-width: 767.98px) {
+  body {
+    padding-bottom: calc(var(--mobile-bar-h) + env(safe-area-inset-bottom));
+  }
+}

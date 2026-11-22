@@ -1,0 +1,7 @@
+# Netlify: static export, no server runtime needed.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"

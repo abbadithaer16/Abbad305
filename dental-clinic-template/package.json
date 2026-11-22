@@ -1,0 +1,32 @@
+{
+  "name": "dental-clinic-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual (Arabic/English) dental clinic website template. Re-brand by editing clinic.config.ts.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx --yes serve@14.2.4 out",
+    "typecheck": "tsc --noEmit",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.68.0",
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@tailwindcss/postcss": "4.3.5",
+    "@types/node": "^22.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "^19.2.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}
