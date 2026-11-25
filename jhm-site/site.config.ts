@@ -144,24 +144,29 @@ const site: SiteConfig = {
   },
 
   /* ── Reviews ─────────────────────────────────────────────────────────── */
-  // Replace with real Google reviews (copied word for word) and remove `sample: true`.
+  // Real Google reviews, copied word for word (line breaks kept with \n).
   reviews: {
-    googleUrl: 'https://www.google.com/maps/search/?api=1&query=%D8%A7%D9%84%D8%A3%D8%B1%D8%AF%D9%86%D9%8A%D8%A9%20%D9%84%D8%B5%D9%8A%D8%A7%D9%86%D8%A9%20%D8%A7%D9%84%D9%87%D8%A7%D9%8A%D8%A8%D8%B1%D8%AF',
+    googleUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJs_55YetgGxURIO7o6JID6Z8',
     items: [
       {
-        author: 'اسم العميل',
-        text: 'شرحوا لي المشكلة بوضوح قبل ما يبلشوا، والسعر كان مثل ما اتفقنا.',
-        sample: true,
+        author: 'Ayman S',
+        rating: 5,
+        text: [
+          'السيارة رجعت وكالة',
+          'عزم قوي جداً',
+          '٣٢٠ كيلو متر بالتنكة',
+          'شكراً الأردنية لصيانة الهايبرد',
+        ].join('\n'),
       },
       {
-        author: 'اسم العميل',
-        text: 'فحصوا بطارية الهايبرد وعرفوا العطل بسرعة. تعامل محترم.',
-        sample: true,
+        author: 'Ahmad Alshaqildi',
+        rating: 5,
+        text: 'شركة رائعه جدا ومهندس تامر مهندس بمعنى الكلمة مشكورين',
       },
       {
-        author: 'اسم العميل',
-        text: 'شغل مرتب ومواعيد واضحة، وبنصح فيهم لأي سيارة هايبرد.',
-        sample: true,
+        author: 'Abbas Ahmad',
+        rating: 5,
+        text: 'من ارقى واحسن الورش الي تعاملت معهم، بشكر ادارة المحل على تعاملهم الراقي مع تمنياتي لكم بمزيد من التقدم',
       },
     ],
   },

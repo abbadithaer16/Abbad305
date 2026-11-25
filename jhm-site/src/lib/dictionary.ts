@@ -31,7 +31,9 @@ const ar = {
   gallery: { title: 'من موقعنا' },
   reviews: {
     title: 'آراء زبائننا',
-    google: 'شوف تقييماتنا على جوجل',
+    google: 'شوف كل التقييمات على Google',
+    fromGoogle: 'من تقييمات Google',
+    stars: (n: number) => `${n} من 5 نجوم`,
     sample: 'تقييم تجريبي',
     sampleNote: 'التقييمات المعروضة هنا تجريبية، وسيتم استبدالها بتقييمات حقيقية من جوجل.',
   },

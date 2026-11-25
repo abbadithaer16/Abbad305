@@ -46,8 +46,11 @@ export type Branch = {
 
 export type Review = {
   author: string;
+  /** Copied exactly from Google. Line breaks (\n) are kept on the card. */
   text: string;
-  /** Shows a visible "تقييم تجريبي" label. Remove only for real reviews copied from Google. */
+  /** Star rating given on Google (1–5). */
+  rating?: 1 | 2 | 3 | 4 | 5;
+  /** Marks a placeholder review: shows a visible "تقييم تجريبي" label instead of the Google line. */
   sample?: boolean;
 };
 
