@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+.netlify
+
+# Original, full-size photos (run `npm run photos` to create web versions in public/photos)
+photos-original

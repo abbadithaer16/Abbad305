@@ -1,0 +1,4 @@
+# Netlify: set "Base directory" to this folder in the site settings.
+[build]
+  command = "npm run build"
+  publish = "out"

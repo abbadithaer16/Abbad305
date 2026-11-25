@@ -1,0 +1,299 @@
+@import 'tailwindcss';
+
+/*
+ * THEME PRESETS
+ * Pick one in center.config.ts (theme: 'electric' | 'night' | 'classic').
+ * All pairs below were checked for WCAG AA contrast (text ≥ 4.5:1).
+ *   --accent / --accent-fg      filled buttons
+ *   --accent-text               accent-coloured text and icons on the page background
+ *   --band-*                    the dark "main offer" band
+ */
+:root,
+[data-theme='electric'] {
+  --bg: #ffffff;
+  --surface: #f3f7f4;
+  --card: #ffffff;
+  --fg: #0d1b14;
+  --muted: #4a5b52;
+  --border: #dbe5df;
+  --accent: #22d36e;
+  --accent-hover: #1bbf61;
+  --accent-fg: #05210f;
+  --accent-edge: #0a7a3a;
+  --accent-text: #0a7a3a;
+  --accent-soft: #e2f7ea;
+  --band: #0d1b14;
+  --band-fg: #ffffff;
+  --band-muted: #b4c4bb;
+  --band-accent: #22d36e;
+  --band-accent-hover: #4ade80;
+  --band-accent-fg: #05210f;
+  --placeholder: #e9efeb;
+  --danger: #b42318;
+  --placeholder-fg: #4a5b52;
+  --shadow: 0 1px 2px rgb(13 27 20 / 0.06), 0 8px 24px -12px rgb(13 27 20 / 0.18);
+  color-scheme: light;
+}
+
+[data-theme='night'] {
+  --bg: #0f1316;
+  --surface: #151b1f;
+  --card: #1a2125;
+  --fg: #eef3f4;
+  --muted: #a7b3b9;
+  --border: #2a3439;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  --accent-fg: #032420;
+  --accent-edge: #2dd4bf;
+  --accent-text: #5eead4;
+  --accent-soft: #123532;
+  --band: #102b2a;
+  --band-fg: #eef3f4;
+  --band-muted: #b3c9c6;
+  --band-accent: #2dd4bf;
+  --band-accent-hover: #5eead4;
+  --band-accent-fg: #032420;
+  --placeholder: #1f282c;
+  --danger: #ff9b8f;
+  --placeholder-fg: #a7b3b9;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 28px -12px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+[data-theme='classic'] {
+  --bg: #ffffff;
+  --surface: #f3f5f9;
+  --card: #ffffff;
+  --fg: #0f1a2e;
+  --muted: #4a5568;
+  --border: #dae0ea;
+  --accent: #1e3a8a;
+  --accent-hover: #1e40af;
+  --accent-fg: #ffffff;
+  --accent-edge: #1e3a8a;
+  --accent-text: #1d4ed8;
+  --accent-soft: #e7edfb;
+  --band: #0f1f47;
+  --band-fg: #ffffff;
+  --band-muted: #c1cbe2;
+  --band-accent: #ffffff;
+  --band-accent-hover: #e7edfb;
+  --band-accent-fg: #0f1f47;
+  --placeholder: #e8ecf3;
+  --danger: #b42318;
+  --placeholder-fg: #4a5568;
+  --shadow: 0 1px 2px rgb(15 26 46 / 0.06), 0 8px 24px -12px rgb(15 26 46 / 0.2);
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-edge: var(--accent-edge);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-band: var(--band);
+  --color-band-fg: var(--band-fg);
+  --color-band-muted: var(--band-muted);
+  --color-band-accent: var(--band-accent);
+  --color-band-accent-hover: var(--band-accent-hover);
+  --color-band-accent-fg: var(--band-accent-fg);
+  --color-placeholder: var(--placeholder);
+  --color-danger: var(--danger);
+  --color-placeholder-fg: var(--placeholder-fg);
+  --shadow-card: var(--shadow);
+  --font-sans: var(--font-plex-en), var(--font-plex-ar), system-ui, sans-serif;
+  --font-arabic: var(--font-plex-ar), var(--font-plex-en), system-ui, sans-serif;
+}
+
+@theme {
+  --radius-card: 14px;
+  --radius-btn: 12px;
+  --radius-chip: 10px;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Base                                                                      */
+/* ------------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    scroll-padding-top: 5.5rem; /* anchor targets clear the sticky header */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html[lang='ar'] body {
+    font-family: var(--font-arabic);
+    line-height: 1.85;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  html[lang='ar'] :is(h1, h2, h3) {
+    line-height: 1.45;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--accent-text);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* Phone numbers and other Latin strings keep their order inside Arabic text */
+  .ltr-nums {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+/* ------------------------------------------------------------------------ */
+/* Buttons                                                                   */
+/* ------------------------------------------------------------------------ */
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding-inline: 1.25rem;
+  border-radius: var(--radius-btn);
+  border: 1.5px solid transparent;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out,
+    background-color 180ms ease-out,
+    border-color 180ms ease-out;
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@utility btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent-edge);
+  &:hover {
+    background: var(--accent-hover);
+  }
+}
+
+@utility btn-secondary {
+  background: var(--card);
+  color: var(--fg);
+  border-color: color-mix(in srgb, var(--fg) 22%, transparent);
+  &:hover {
+    border-color: color-mix(in srgb, var(--fg) 45%, transparent);
+  }
+}
+
+@utility btn-band {
+  background: var(--band-accent);
+  color: var(--band-accent-fg);
+  &:hover {
+    background: var(--band-accent-hover);
+  }
+}
+
+/* Gentle hover lift for cards */
+@utility lift {
+  transition:
+    transform 200ms ease-out,
+    box-shadow 200ms ease-out,
+    border-color 200ms ease-out;
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* ------------------------------------------------------------------------ */
+/* Motion: one-time fade + 16px rise when a block enters the viewport        */
+/* (only when JS is running, so content is never hidden without it)          */
+/* ------------------------------------------------------------------------ */
+
+[data-reveal] {
+  transition:
+    opacity 450ms ease-out,
+    transform 450ms ease-out;
+}
+
+html.js [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  html.js [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+  .btn:hover,
+  .lift:hover {
+    transform: none;
+  }
+}
