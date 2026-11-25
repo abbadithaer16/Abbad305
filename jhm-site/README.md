@@ -73,16 +73,31 @@ npm run social-images
 This rebuilds `og.jpg` (the preview shown when the link is shared on WhatsApp or Facebook)
 and the browser and phone icons. Commit the results.
 
-## Deploy to Vercel
+## Deploy
 
-1. Push this repository to GitHub.
-2. On vercel.com → **Add New… → Project** → import the repository.
-3. Set **Root Directory** to `jhm-site`. Leave everything else as detected (Next.js).
-4. **Deploy.**
+### Netlify (current host)
 
-The site URL used in search results and link previews is detected automatically on Vercel.
-When JHM has its own domain, add it in Vercel (**Settings → Domains**) and set
+Connect the site to GitHub once, and every change merged to `main` goes live by itself:
+
+1. Merge this work into `main` on GitHub.
+2. Netlify → the site → **Site configuration → Build & deploy → Continuous deployment →
+   Link repository** → GitHub → this repository.
+3. **Base directory:** `jhm-site`. Build command and publish folder come from
+   [`netlify.toml`](netlify.toml) (`npm run build`, `out`).
+4. **Production branch:** `main`. Save, then **Deploys → Trigger deploy → Deploy site**.
+
+The site address used in Google and WhatsApp previews is taken from Netlify automatically.
+When JHM gets its own domain, add it in Netlify (**Domain management**) and set
 `siteUrl: 'https://your-domain'` in `site.config.ts`.
+
+A site uploaded by drag and drop (no GitHub link) never updates on its own: run
+`npm run build` and drag the new `out` folder onto **Deploys**. In that case set `siteUrl` in
+`site.config.ts` to the Netlify address first; the build prints a warning when it is missing.
+
+### Vercel
+
+**Add New… → Project** → import the repository → **Root Directory** `jhm-site` → **Deploy**.
+The site address is detected automatically.
 
 ## Checked before delivery
 

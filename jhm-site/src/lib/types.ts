@@ -52,7 +52,7 @@ export type Review = {
 };
 
 export type SiteConfig = {
-  /** Public URL without trailing slash, e.g. 'https://jhm.jo'. Empty = detected on Vercel. */
+  /** Public URL without trailing slash, e.g. 'https://jhm.jo'. Empty = detected on Netlify / Vercel. */
   siteUrl: string;
   lang: Lang;
   name: Text;

@@ -35,12 +35,24 @@ export function directionsUrl(branch: Branch): string {
 
 /* ── URLs ─────────────────────────────────────────────────────────────────── */
 
+/**
+ * Public address of the site, used in search results, sitemap and WhatsApp/Facebook previews.
+ * Order: site.config.ts `siteUrl` → NEXT_PUBLIC_SITE_URL → Netlify (URL) → Vercel → localhost.
+ */
 export function siteUrl(): string {
   const fromEnv =
     process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.URL || // set by Netlify on every build: the site's main address
     (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
     '';
   return (site.siteUrl || fromEnv || 'http://localhost:3000').replace(/\/$/, '');
+}
+
+if (process.env.NODE_ENV === 'production' && siteUrl().startsWith('http://localhost')) {
+  console.warn(
+    '\n⚠ siteUrl is not set: links in Google and WhatsApp previews will point to localhost.\n' +
+      "  Set siteUrl in site.config.ts (e.g. 'https://jhm.netlify.app'), or build on Netlify/Vercel.\n",
+  );
 }
 
 export function absoluteUrl(p: string): string {
