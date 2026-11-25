@@ -8,7 +8,7 @@
 import type { SiteConfig } from './src/lib/types';
 
 const site: SiteConfig = {
-  siteUrl: '', // e.g. 'https://jhm.jo' once there is a domain. Empty = detected on Netlify / Vercel
+  siteUrl: 'https://jhm-hybrid.netlify.app', // e.g. 'https://jhm.jo' once there is a domain. Empty = detected on Netlify / Vercel
   lang: 'ar',
   name: { ar: 'الأردنية لصيانة الهايبرد' },
   shortName: 'JHM',
