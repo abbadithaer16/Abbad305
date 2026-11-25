@@ -4,7 +4,7 @@ import { Section, SectionTitle } from '../ui';
 export function Brands() {
   return (
     <Section labelledBy="brands-title" className="py-14 md:py-20">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex flex-col gap-6">
         <SectionTitle id="brands-title" className="text-2xl md:text-3xl">
           {dict.brands.title}
         </SectionTitle>
