@@ -44,13 +44,22 @@ Photos live in `public/images/jhm/`. To swap one, **replace the file with the sa
 | File | Used for | Best shape |
 |---|---|---|
 | `logo.jpg` | Header, footer | Square, logo on black |
-| `storefront.jpg` | Hero (full width) + gallery | Portrait or landscape, at least 1200px wide |
+| `storefront.jpg` | Hero on tablets/desktop + gallery | Portrait or landscape, at least 1200px wide |
+| `storefront-mobile.jpg` | Hero on phones | Portrait crop of the storefront photo without the signboard (entrance + cars) |
 | `team.jpg` | "فريقنا" | Any; shown cropped to 4:3 |
 | `storefront-wide.jpg` | Gallery | Any; shown cropped to 4:3 |
 
 Use a new file name? Update its `src` in `site.config.ts` (`images`). If the new photo has a
 different size, update `width` / `height` too, and use `focus` (e.g. `'50% 30%'`) to choose
 which part stays visible when it's cropped.
+
+**Hero crops:** on desktop the visible part of `storefront.jpg` is set by `images.hero.focus`
+(`'50% 62%'` = the entrance and cars, below the signboard). Phones use `images.heroMobile`, a
+separate portrait crop, because a tall phone screen shows the whole photo otherwise. If you
+replace the storefront photo, crop a new `storefront-mobile.jpg` (about 640×1000, starting just
+below the sign) or delete `heroMobile` from the config to use the main photo on phones too.
+The hero photo is shown slightly desaturated (`saturate-[.7]` in `src/components/sections/Hero.tsx`)
+so its colours don't compete with the black and gold.
 
 You don't need to resize anything: every build creates small WebP versions of each photo
 automatically (`public/images/_generated`, not committed), and phones download the small ones.

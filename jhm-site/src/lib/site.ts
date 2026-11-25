@@ -125,7 +125,9 @@ function validate(c: SiteConfig) {
     const list = Array.isArray(value) ? value : [value];
     if (!list.every((v) => /^#[0-9a-f]{6}$/i.test(v))) problems.push(`colors.${key} must be a 6-digit hex colour like #c9a24a.`);
   }
-  const files = [c.images.logo, c.images.hero, c.images.team, ...c.images.gallery].map((p) => p.src);
+  const photos = [c.images.logo, c.images.hero, c.images.team, ...c.images.gallery];
+  if (c.images.heroMobile) photos.push(c.images.heroMobile);
+  const files = photos.map((p) => p.src);
   files.push(c.images.og, c.images.icon, c.images.appleIcon);
   for (const f of files) {
     if (!existsSync(path.join(process.cwd(), 'public', f))) problems.push(`Image not found: public${f}`);

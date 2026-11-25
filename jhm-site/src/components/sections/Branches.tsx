@@ -32,7 +32,7 @@ export function Branches() {
               <a href={telHref(branch.phone)} className="mt-2 self-start font-display text-2xl font-bold text-fg hover:text-gold">
                 <PhoneText number={branch.phone} />
               </a>
-              <div className="mt-5 grid grid-cols-3 gap-2">
+              <div className="mt-5 grid grid-cols-2 gap-2 min-[400px]:grid-cols-3">
                 <a href={telHref(branch.phone)} className="btn btn-line min-h-11 gap-1.5 px-2 text-[0.95rem]">
                   <Phone aria-hidden className="size-4 shrink-0" />
                   {dict.call}
@@ -43,7 +43,7 @@ export function Branches() {
                   {dict.whatsapp}
                   <span className="sr-only"> – {name}</span>
                 </a>
-                <a href={directionsUrl(branch)} target="_blank" rel="noopener" className="btn btn-line min-h-11 gap-1.5 px-2 text-[0.95rem]">
+                <a href={directionsUrl(branch)} target="_blank" rel="noopener" className="btn btn-line col-span-2 min-h-11 gap-1.5 px-2 text-[0.95rem] min-[400px]:col-span-1">
                   <Navigation aria-hidden className="size-4 shrink-0" />
                   {dict.directions}
                   <span className="sr-only"> – {name}</span>

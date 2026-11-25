@@ -12,6 +12,7 @@ const ar = {
   menu: 'فتح القائمة',
   closeMenu: 'إغلاق القائمة',
   book: 'احجز موعد',
+  bookShort: 'احجز',
   bookWhatsApp: 'احجز على واتساب',
   callNow: 'اتصل الآن',
   call: 'اتصال',

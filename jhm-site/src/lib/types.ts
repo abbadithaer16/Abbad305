@@ -83,6 +83,11 @@ export type SiteConfig = {
   images: {
     logo: Photo;
     hero: Photo;
+    /**
+     * Optional portrait crop of the hero photo for phones (≤ 767px wide), so phones show
+     * what matters (entrance, cars) instead of the whole photo squeezed into a tall screen.
+     */
+    heroMobile?: Photo;
     team: Photo;
     gallery: Photo[];
     /** Social preview image, 1200×630 JPG (shown when the link is shared on WhatsApp etc.). */

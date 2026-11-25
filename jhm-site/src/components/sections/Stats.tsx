@@ -3,7 +3,7 @@ import { HexFrame } from '../Hex';
 
 export function Stats() {
   return (
-    <section aria-label={dict.stats} className="border-b border-line bg-bg py-12 md:py-16">
+    <section aria-label={dict.stats} className="border-b border-line bg-bg pt-4 pb-12 md:py-16">
       <ul className="container-page grid grid-cols-3 gap-3 sm:gap-8">
         {site.stats.map((stat) => (
           <li key={stat.label.ar} className="flex flex-col items-center text-center">

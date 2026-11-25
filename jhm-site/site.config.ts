@@ -37,10 +37,17 @@ const site: SiteConfig = {
     },
     hero: {
       src: '/images/jhm/storefront.jpg',
-      alt: { ar: 'واجهة الأردنية لصيانة السيارات وسيارات الزبائن أمام الورشة' },
+      alt: { ar: 'مدخل الورشة وسيارات الزبائن أمامها' },
       width: 1200,
       height: 1600,
-      focus: '50% 30%',
+      focus: '50% 62%', // shop entrance and cars, not the signboard
+    },
+    heroMobile: {
+      src: '/images/jhm/storefront-mobile.jpg', // portrait crop of storefront.jpg below the sign
+      alt: { ar: 'مدخل الورشة وسيارات الزبائن أمامها' },
+      width: 640,
+      height: 1000,
+      focus: '50% 0%',
     },
     team: {
       src: '/images/jhm/team.jpg',
